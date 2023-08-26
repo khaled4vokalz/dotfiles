@@ -18,6 +18,7 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "plugins" },
     { "rcarriga/nvim-notify", enabled = false },
+    { "windwp/nvim-ts-autotag" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -46,3 +47,4 @@ require("lazy").setup({
     },
   },
 })
+require("nvim-ts-autotag").setup()
