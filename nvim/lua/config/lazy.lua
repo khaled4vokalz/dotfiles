@@ -15,10 +15,17 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.java" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- import/override with your plugins
     { import = "plugins" },
     { "rcarriga/nvim-notify", enabled = false },
     { "windwp/nvim-ts-autotag" },
+    -- {
+    --   "neovim/nvim-lspconfig",
+    --   opts = {
+    --     format = { timeout_ms = 5000 },
+    --   },
+    -- },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
