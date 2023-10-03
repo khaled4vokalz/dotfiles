@@ -82,14 +82,6 @@ return {
       on_attach = on_attach,
     })
 
-    require("typescript").setup({})
-
-    -- configure typescript server with plugin
-    -- lspconfig["tsserver"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- })
-
     -- configure angular server
     lspconfig["angularls"].setup({
       capabilities = capabilities,

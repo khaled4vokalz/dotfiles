@@ -1,5 +1,5 @@
 return {
-  "jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
+  "nvimtools/none-ls.nvim", -- configure formatters & linters
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     -- import null-ls plugin
@@ -32,7 +32,6 @@ return {
             return true
           end,
         }),
-        require("typescript.extensions.null-ls.code-actions"),
         debug = true,
       },
       -- configure format on save
