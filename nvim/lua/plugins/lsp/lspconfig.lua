@@ -82,6 +82,12 @@ return {
       on_attach = on_attach,
     })
 
+    -- configure typescript server
+    lspconfig["tsserver"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     -- configure angular server
     lspconfig["angularls"].setup({
       capabilities = capabilities,
