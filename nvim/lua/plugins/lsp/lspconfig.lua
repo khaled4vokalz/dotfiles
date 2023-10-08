@@ -68,7 +68,6 @@ return {
 
     -- START: configure common language servers that don't require custom configs
     local servers = {
-      "html",
       "cssls",
       "jsonls",
       "bashls",
@@ -76,7 +75,6 @@ return {
       "lemminx",
       "pyright",
       "eslint",
-      "tsserver",
       "graphql",
     }
 
@@ -87,6 +85,14 @@ return {
       })
     end
     -- END
+
+    lspconfig["tsserver"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      -- we need to manually define some custom file types, else it conflicts with angularls
+      -- and as a result the angular template navigations (go to definition etc.) to typescript files does not work
+      filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+    })
 
     -- configure angular server
     local util = require("lspconfig.util")
