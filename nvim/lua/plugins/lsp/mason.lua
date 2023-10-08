@@ -28,6 +28,7 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
+        "eslint",
         "tsserver",
         "bashls",
         "angularls",
@@ -37,7 +38,6 @@ return {
         "tailwindcss",
         "lua_ls",
         "graphql",
-        "emmet_ls",
         "pyright",
         "yamlls",
         "lemminx",
@@ -51,7 +51,7 @@ return {
       ensure_installed = {
         "prettier", -- ts/js formatter
         "stylua", -- lua formatter
-        "eslint_d", -- ts/js linter
+        "eslint", -- ts/js linter
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true,

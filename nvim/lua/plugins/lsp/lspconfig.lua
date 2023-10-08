@@ -70,17 +70,26 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    -- configure html server
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    -- START: configure common language servers that don't require custom configs
+    local servers = {
+      "html",
+      "cssls",
+      "jsonls",
+      "bashls",
+      "yamlls",
+      "lemminx",
+      "pyright",
+      "eslint",
+      "tsserver",
+    }
 
-    -- configure typescript server
-    lspconfig["tsserver"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    for _, lsp in ipairs(servers) do
+      lspconfig[lsp].setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
+    end
+    -- END
 
     -- configure angular server
     local util = require("lspconfig.util")
@@ -92,54 +101,11 @@ return {
       filetypes = { "html" },
     })
 
-    -- configure css server
-    lspconfig["cssls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    -- configure bash server
-    lspconfig["bashls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    -- configure json server
-    lspconfig["jsonls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    -- configure yaml server
-    lspconfig["yamlls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    -- configure xml server
-    lspconfig["lemminx"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
     -- configure graphql language server
     lspconfig["graphql"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-    })
-
-    -- configure emmet language server
-    lspconfig["emmet_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-    })
-
-    -- configure python server
-    lspconfig["pyright"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+      filetypes = { "graphql", "gql" },
     })
 
     -- configure lua server (with special settings)
