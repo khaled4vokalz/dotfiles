@@ -76,12 +76,6 @@ return {
       on_attach = on_attach,
     })
 
-    -- configure html server
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
     -- configure typescript server
     lspconfig["tsserver"].setup({
       capabilities = capabilities,
@@ -89,9 +83,13 @@ return {
     })
 
     -- configure angular server
+    local util = require("lspconfig.util")
+    local root_dir = util.root_pattern("angular.json", "project.json")
     lspconfig["angularls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      root_dir = root_dir,
+      filetypes = { "html" },
     })
 
     -- configure css server
