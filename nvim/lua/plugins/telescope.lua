@@ -12,6 +12,11 @@ return {
     require("telescope").load_extension("live_grep_args")
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
-    keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+    keymap.set(
+      "n",
+      "<leader>fg",
+      ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+      { desc = "Find using grep" }
+    )
   end,
 }
