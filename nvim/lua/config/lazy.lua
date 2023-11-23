@@ -49,3 +49,10 @@ require("lazy").setup({
   },
 })
 require("nvim-ts-autotag").setup()
+-- require("neo-tree").setup({
+--   filesystem = {
+--     filtered_items = {
+--       hide_dotfiles = false,
+--     },
+--   },
+-- })
