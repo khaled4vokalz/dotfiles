@@ -76,6 +76,7 @@ return {
       "pyright",
       "eslint",
       "graphql",
+      "rust_analyzer",
     }
 
     for _, lsp in ipairs(servers) do
