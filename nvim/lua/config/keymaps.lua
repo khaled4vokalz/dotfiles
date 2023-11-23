@@ -1,6 +1,6 @@
 local keymap = vim.keymap -- for conciseness
 
-keymap.set("n", "sa", "ggVG", { desc = "select all in current buffer" })
+keymap.set("n", "sa", "gg<S-v><S-g>", { desc = "select all in current buffer" })
 
 -- keep visual selection when (de)indenting
 keymap.set("v", ">", ">gv", {})
