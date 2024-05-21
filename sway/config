@@ -13,7 +13,8 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $browser google-chrome --ozone-platform-hint=wayland & disown
+set $wayland_flags  --enable-features=WaylandWindowDecorations --enable-features=UseOzonePlatform --ozone-platform-hint=wayland
+set $browser google-chrome $wayland_flags & disown
 # options thunar, vifm
 set $file_explorer thunar
 # Your preferred terminal emulator
@@ -94,7 +95,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
     # Start a browser instance
     bindsym $mod+o exec $browser
-    bindsym $mod+c exec slack --enable-features=WebRTCPipeWireCapturer --ozone-platform-hint=wayland
+    bindsym $mod+c exec slack $wayland_flags
 #
 # Moving around:
 #
@@ -264,6 +265,12 @@ bindsym --to-code $mod+p mode $exit
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+#
+# Brightness control
+#
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 #
 # Fix external monitor scaling
