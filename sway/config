@@ -3,7 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -13,12 +13,13 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $wayland_flags  --enable-features=WaylandWindowDecorations --enable-features=UseOzonePlatform --ozone-platform-hint=wayland
+set $wayland_flags  --enable-features=WebRTCPipeWireCapturer --enable-features=WaylandWindowDecorations --enable-features=UseOzonePlatform --ozone-platform-hint=wayland
 set $browser google-chrome $wayland_flags & disown
 # options thunar, vifm
 set $file_explorer thunar
 # Your preferred terminal emulator
 set $term alacritty
+set $screen_shot XDG_CURRENT_DESKTOP=sway flameshot gui
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -253,24 +254,30 @@ mode $exit {
     
         Return mode "default"
         Escape mode "default"
-        $mod+p mode "default"
+        $mod+r mode "default"
     }
 }
 
-bindsym --to-code $mod+p mode $exit
+bindsym --to-code $mod+r mode $exit
 
 # 
 # Volume control
 #
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 #
 # Brightness control
 #
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
+
+#
+# Screenshot
+#
+for_window [app_id="flameshot"] floating enable, fullscreen disable, move absolute position 0 0, border pixel 0
+bindsym $mod+p exec --no-startup-id $screen_shot
 
 #
 # Fix external monitor scaling
