@@ -259,4 +259,10 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
+#
+# Fix external monitor scaling
+#
+
+exec_always ~/.config/sway/scripts/adjust_monitors.sh
+
 include /etc/sway/config.d/*
