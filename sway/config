@@ -14,6 +14,8 @@ set $down j
 set $up k
 set $right l
 set $browser google-chrome --ozone-platform-hint=wayland & disown
+# options thunar, vifm
+set $file_explorer thunar
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
@@ -233,6 +235,10 @@ set $lockman exec bash $HOME/.config/sway/lockman.sh
 bindsym $mod+m exec $lockman
 
 #
+# File explorer
+bindsym $mod+x exec $file_explorer & disown
+
+#
 # exit mode
 #
 
@@ -246,11 +252,11 @@ mode $exit {
     
         Return mode "default"
         Escape mode "default"
-        $mod+x mode "default"
+        $mod+p mode "default"
     }
 }
 
-bindsym --to-code $mod+x mode $exit
+bindsym --to-code $mod+p mode $exit
 
 # 
 # Volume control
