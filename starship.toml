@@ -1,0 +1,63 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$all\
+$fill\
+$cmd_duration $time\
+$line_break\
+$character"""
+command_timeout = 1000
+#add_newline=false
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+[fill]
+symbol = " "
+
+
+[username]
+style_user = "green bold"
+style_root = "red bold"
+# format = "[$user]($style)"
+format = "🤖🐧"
+disabled = false
+show_always = true
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "yellow"
+disabled = false
+
+[hostname]
+ssh_only = false
+format = '@[$hostname](bold yellow) '
+trim_at = "."
+disabled = true
+
+[battery]
+charging_symbol = "electric_plug"
+disabled=true
+
+[directory]
+truncation_length=2
+truncate_to_repo=false
+fish_style_pwd_dir_length=1
+#format="[📁 $path]($style)[$read_only]($read_only_style) "
+
+[time]
+time_format = "%I:%M:%S %P"
+format = "[$time]($style) "
+style = "bold bright-white"
+disabled = false 
+
+[package]
+disabled=true
+
