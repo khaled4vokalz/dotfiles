@@ -23,8 +23,18 @@ set $screen_shot XDG_CURRENT_DESKTOP=sway flameshot gui
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
+
+# DMENU
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec --
+
+# BEMENU
+# set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec --
+
+# WOFI
+# set $menu wofi --show run
+
+# FUZZEL
+set $menu fuzzel | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*
 
@@ -295,5 +305,11 @@ bindsym $mod+p exec --no-startup-id $screen_shot
 #
 
 exec_always ~/.config/sway/scripts/adjust_monitors.sh
+
+#
+# Network Manager
+#
+for_window [app_id="nm_tui_win"] floating enable, move position center
+bindsym $mod+i exec --no-startup-id alacritty -t nm_tui_win -e "nmtui"
 
 include /etc/sway/config.d/*
