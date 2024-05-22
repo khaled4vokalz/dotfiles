@@ -59,13 +59,12 @@ window#waybar {
 #language,
 #windows,
 #battery,
+#custom-power,
 #cava {
   background-color: #2e3440;
   color: #a3be8c;
   border-radius: 16px;
   margin: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
   padding: 0px 10px 0px 10px;
   font-weight: bold;
 }
@@ -95,17 +94,6 @@ window#waybar {
 
 #backlight {
   background-color: #2e3440;
-  border-radius: 16px;
-  margin: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-  padding: 0px 10px 0px 10px;
-  font-weight: bold;
-}
-
-#custom-pacmanAlt {
-  background-color: #2e3440;
-  color: #a3be8c;
   border-radius: 16px;
   margin: 5px;
   margin-left: 5px;
@@ -173,31 +161,6 @@ window#waybar {
   margin-left: 10px;
 }
 
-#custom-playerctl {
-  background: #2e3440;
-  padding: 0px 5px 0px 10px;
-  border-radius: 16px;
-  /*border-left: solid 1px #282738;*/
-  /*border-right: solid 1px #282738;*/
-  margin: 5px 7px;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 16px;
-}
-
-#custom-playerlabel {
-  background: transparent;
-  padding-left: 10px;
-  padding-right: 5px;
-  border-radius: 16px;
-  /*border-left: solid 1px #282738;*/
-  /*border-right: solid 1px #282738;*/
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-weight: normal;
-  font-style: normal;
-}
-
 #window {
   background: #2e3440;
   padding-left: 15px;
@@ -211,6 +174,7 @@ window#waybar {
   font-style: normal;
 }
 
+#custom-power,
 #cpu {
   background-color: #2e3440;
   color: #bf616a;
@@ -246,7 +210,7 @@ window#waybar {
 
 #language {
   background-color: #2e3440;
-  color: #a3be8c;
+  color: #f2be9c;
   border-radius: 16px;
   margin: 5px;
   margin-left: 5px;
