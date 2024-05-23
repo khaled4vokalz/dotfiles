@@ -22,9 +22,6 @@ button:hover {
   background-color: #4c566a;
   color: #81a1c1;
   outline-style: none;
-  transition:
-    all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682),
-    box-shadow 0.5s ease-in;
 }
 
 #lock {
