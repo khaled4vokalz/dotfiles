@@ -1,4 +1,4 @@
-image=$HOME/.config/swaylock/iceberg-minimalist.jpg
+image=$HOME/.config/wallpapers/iceberg-minimalist.jpg
 daemonize
 show-failed-attempts
 # clock
