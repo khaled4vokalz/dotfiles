@@ -121,10 +121,12 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         // "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-wifi": "({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "interval": 2,
+        //"format": "{ifname}",
+        "format-ethernet": " ⬆{bandwidthUpBytes} ⬇{bandwidthDownBytes} 🖧",
+        "format-wifi": "({signalStrength}%) ⬆{bandwidthUpBytes} ⬇{bandwidthDownBytes} ",
         // "tooltip-format": "{ifname} via {gwaddr} ",
-        "tooltip-format": "{essid}",
+        "tooltip-format": "{ipaddr}/{cidr} 🖧  | {essid} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
@@ -132,9 +134,9 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        "format-muted": " muted {format_source} ",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
