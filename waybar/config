@@ -5,8 +5,8 @@
     // "width": 1280, // Waybar width
     "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "tray"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["sway/window", "sway/mode", "sway/scratchpad", "tray"],
+    "modules-center": ["sway/workspaces"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "custom/power", "clock"],
     // Modules configuration
     // "sway/workspaces": {
