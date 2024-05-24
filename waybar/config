@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/window", "sway/mode", "sway/scratchpad", "tray"],
+    "modules-left": ["sway/window", "tray"],
     "modules-center": ["sway/workspaces"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "custom/power", "clock"],
     // Modules configuration
@@ -34,6 +34,11 @@
             "unlocked": ""
         }
     },
+    "sway/window": {
+      "max-length": 20,
+      "icon": true,
+      "icon-size": 18
+      },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
