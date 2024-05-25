@@ -19,7 +19,7 @@ set $browser google-chrome $wayland_flags & disown
 set $file_explorer thunar
 # Your preferred terminal emulator
 set $term alacritty
-set $screen_shot XDG_CURRENT_DESKTOP=sway flameshot gui
+set $screen_shot XDG_CURRENT_DESKTOP=sway flameshot gui --raw | wl-copy
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
