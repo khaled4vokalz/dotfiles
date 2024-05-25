@@ -31,19 +31,19 @@ window#waybar {
   background-color: #6f7787;
   transition: all 0.3s ease-in-out;
 }
-#workspaces button.active {
-  color: #cdd6f4;
-  background-color: #cdd6f4;
+#workspaces button.focused {
+  color: #2e3440;
+  background-color: #a3be8c;
   border-radius: 16px;
-  min-width: 50px;
+  min-width: 40px;
   background-size: 400% 400%;
   transition: all 0.3s ease-in-out;
 }
 #workspaces button:hover {
-  background-color: #cdd6f4;
   color: #2e3440;
+  background-color: #cdd6f4;
   border-radius: 16px;
-  min-width: 50px;
+  min-width: 40px;
   background-size: 400% 400%;
 }
 
