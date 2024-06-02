@@ -5,6 +5,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 export PATH=${PATH}:${HOME}/.local/bin 
 
