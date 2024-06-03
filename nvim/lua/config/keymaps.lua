@@ -28,6 +28,3 @@ keymap.set("x", "p", "P", { silent = true })
 keymap.set("n", "<leader>far", function()
   vim.lsp.buf.references()
 end, { noremap = true, desc = "Find all references " })
-
--- Trouble
-keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<CR>", { desc = "Toggle Trouble Modal" })
