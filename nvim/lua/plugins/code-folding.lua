@@ -32,7 +32,7 @@ return {
     vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
     vim.o.foldlevelstart = 99 -- to keep folds open upon opening a file
     vim.o.foldenable = true
-    vim.o.foldoptions = "nodigits"
+    -- vim.o.foldoptions = "nodigits"
     vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
     local keymap = vim.keymap
