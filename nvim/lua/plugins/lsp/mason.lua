@@ -42,6 +42,9 @@ return {
         "pyright",
         "yamlls",
         "lemminx",
+        "jdtls",
+        "java-debug-adapter",
+        "java-test",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed

@@ -129,7 +129,7 @@ function mkfile() {
     mkdir -p  "$1" && touch  "$1"/"$2" 
 }
 
-export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-current
 export PATH=${PATH}:${JAVA_HOME}/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=${PATH}:${HOME}/go/bin 

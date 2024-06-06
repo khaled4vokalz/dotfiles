@@ -154,6 +154,16 @@ return {
       )
     end
 
+    dap.configurations.java = {
+      {
+        type = "java",
+        request = "attach",
+        name = "Debug (Attach) - Remote",
+        hostName = "127.0.0.1",
+        port = 5005,
+      },
+    }
+
     for _, language in ipairs(js_based_languages) do
       dap.configurations[language] = {
         -- Debug single nodejs files
