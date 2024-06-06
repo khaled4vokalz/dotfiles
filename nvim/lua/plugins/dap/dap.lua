@@ -5,11 +5,11 @@ local js_based_languages = {
 
 return {
   "mfussenegger/nvim-dap",
-
   dependencies = {
 
     -- fancy UI for the debugger
     {
+      "nvim-neotest/nvim-nio",
       "rcarriga/nvim-dap-ui",
       -- stylua: ignore
       keys = {
