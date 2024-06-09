@@ -320,8 +320,8 @@ for_window [app_id="nm_tui_win"] floating enable, move position center
 bindsym $mod+i exec --no-startup-id alacritty -t nm_tui_win -e "nmtui"
 
 
-assign [app_id="Slack"] workspace number 1
-assign [app_id="Alacritty"] workspace number 2
-assign [app_id="google-chrome"] workspace number 3
+# assign [app_id="Slack"] workspace number 1
+# assign [app_id="Alacritty"] workspace number 2
+# assign [app_id="google-chrome"] workspace number 3
 
 include /etc/sway/config.d/*
