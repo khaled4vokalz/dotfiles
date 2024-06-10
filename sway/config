@@ -319,6 +319,8 @@ exec_always ~/.config/sway/scripts/adjust_monitors.sh
 for_window [app_id="nm_tui_win"] floating enable, move position center
 bindsym $mod+i exec --no-startup-id alacritty -t nm_tui_win -e "nmtui"
 
+bindsym $mod+z exec --no-startup-id blueman-manager 
+
 
 # assign [app_id="Slack"] workspace number 1
 # assign [app_id="Alacritty"] workspace number 2
