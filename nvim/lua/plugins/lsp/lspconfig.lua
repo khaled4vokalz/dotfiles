@@ -74,7 +74,6 @@ return {
       "yamlls",
       "lemminx",
       "pyright",
-      "eslint",
       "graphql",
       "rust_analyzer",
     }
@@ -86,17 +85,18 @@ return {
       })
     end
     -- END
+    local util = require("lspconfig.util")
+    local root_dir = util.root_pattern(".git")
     lspconfig["tsserver"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      root_dir = root_dir,
       -- we need to manually define some custom file types, else it conflicts with angularls
       -- and as a result the angular template navigations (go to definition etc.) to typescript files does not work
       filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
     })
 
     -- configure angular server
-    local util = require("lspconfig.util")
-    local root_dir = util.root_pattern("angular.json", "project.json")
     lspconfig["angularls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -104,6 +104,11 @@ return {
       filetypes = { "html" },
     })
 
+    lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = root_dir,
+    })
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
@@ -125,12 +130,4 @@ return {
       },
     })
   end,
-  servers = {
-    eslint = {
-      settings = {
-        -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
-        workingDirectory = { mode = "auto" },
-      },
-    },
-  },
 }
