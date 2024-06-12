@@ -11,34 +11,7 @@ return {
     {
       "nvim-neotest/nvim-nio",
       "rcarriga/nvim-dap-ui",
-      -- stylua: ignore
-      keys = {
-        { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
-        { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
-      },
-      opts = {},
-      config = function(_, opts)
-        -- setup dap config by VsCode launch.json file
-        -- require("dap.ext.vscode").load_launchjs()
-        local dap = require("dap")
-        local dapui = require("dapui")
-        dapui.setup(opts)
-        dap.listeners.after.event_initialized["dapui_config"] = function()
-          dapui.open({})
-        end
-        dap.listeners.before.event_terminated["dapui_config"] = function()
-          dapui.close({})
-        end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-          dapui.close({})
-        end
-      end,
-    },
-
-    -- virtual text for the debugger
-    {
       "theHamsta/nvim-dap-virtual-text",
-      opts = {},
     },
 
     -- which key integration
@@ -142,8 +115,21 @@ return {
   },
 
   config = function()
+    local dap, dapui = require("dap"), require("dapui")
+    dap.listeners.before.attach.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+      dapui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+      dapui.close()
+    end
+
     local Config = require("lazyvim.config")
-    local dap = require("dap")
     vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
     for name, sign in pairs(Config.icons.dap) do
@@ -166,15 +152,6 @@ return {
 
     for _, language in ipairs(js_based_languages) do
       dap.configurations[language] = {
-        -- Debug single nodejs files
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Launch file",
-          program = "${file}",
-          cwd = vim.fn.getcwd(),
-          sourceMaps = true,
-        },
         -- Debug nodejs processes (make sure to add --inspect when you run the process)
         {
           type = "pwa-node",
@@ -183,37 +160,6 @@ return {
           processId = require("dap.utils").pick_process,
           cwd = vim.fn.getcwd(),
           sourceMaps = true,
-        },
-        -- Debug web applications (client side)
-        {
-          type = "pwa-chrome",
-          request = "launch",
-          name = "Launch & Debug Chrome",
-          url = function()
-            local co = coroutine.running()
-            return coroutine.create(function()
-              vim.ui.input({
-                prompt = "Enter URL: ",
-                default = "http://localhost:3000",
-              }, function(url)
-                if url == nil or url == "" then
-                  return
-                else
-                  coroutine.resume(co, url)
-                end
-              end)
-            end)
-          end,
-          webRoot = vim.fn.getcwd(),
-          protocol = "inspector",
-          sourceMaps = true,
-          userDataDir = false,
-        },
-        -- Divider for the launch.json derived configs
-        {
-          name = "----- ↓ launch.json configs ↓ -----",
-          type = "",
-          request = "launch",
         },
       }
     end

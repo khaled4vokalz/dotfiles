@@ -51,6 +51,7 @@ require("lazy").setup({
   },
 })
 require("nvim-ts-autotag").setup()
+require("dapui").setup()
 -- require("neo-tree").setup({
 --   filesystem = {
 --     filtered_items = {
