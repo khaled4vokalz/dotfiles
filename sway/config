@@ -17,6 +17,10 @@ set $wayland_flags  --enable-webrtc-pipewire-capturer --enable-features=WaylandW
 set $browser google-chrome $wayland_flags & disown
 # options thunar, vifm
 set $file_explorer thunar
+
+# screen recording tool, peek doesn't work on wayland and also discontinued currently
+set $screen_recorder wf-recorder --geometry "$(slrup)"
+
 # Your preferred terminal emulator
 set $term alacritty
 set $screen_shot XDG_CURRENT_DESKTOP=sway flameshot gui --raw | wl-copy
@@ -42,7 +46,7 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /usr/share/backgrounds/warty-final-ubuntu.png fill
+output * bg /usr/share/backgrounds/Monument_valley_by_orbitelambda.jpg fill
 #
 # Example configuration:
 #
@@ -259,6 +263,10 @@ bindsym $mod+m exec $lockman
 #
 # File explorer
 bindsym $mod+x exec $file_explorer & disown
+
+#
+# Screen Recording
+bindsym $mod+u exec $screen_recorder & disown
 
 #
 # exit mode

@@ -1,6 +1,7 @@
 return {
   "williamboman/mason.nvim",
   dependencies = {
+    "jose-elias-alvarez/null-ls.nvim",
     "williamboman/mason-lspconfig.nvim",
     "jayp0521/mason-null-ls.nvim",
   },
@@ -56,6 +57,8 @@ return {
         "prettier", -- ts/js formatter
         "stylua", -- lua formatter
         "eslint", -- ts/js linter
+        "shfmt",
+        "shellcheck",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true,
