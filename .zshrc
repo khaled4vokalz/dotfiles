@@ -186,3 +186,6 @@ eval "$(pyenv virtualenv-init -)"
 
 alias logout='sudo pkill -u $(whoami)'
 # alias tks="tmux kill-session -t $(tmux display-message -p '#S')"
+source <(fzf --zsh)
+alias fzf="fzf --height 40% --layout reverse --border"
+alias fo="fzf --print0 | xargs -0 -o vi"
