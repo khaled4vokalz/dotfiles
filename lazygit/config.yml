@@ -1,0 +1,12 @@
+customCommands:
+  - key: '<c-f>'  # Ctrl-f (think "full screen") to show selected commit
+    context: 'commits'
+    command: "git show {{.SelectedLocalCommit.Sha}}"
+    subprocess: true
+    description: "Show selected commit"
+    stream: true
+git:
+  paging:
+    externalDiffCommand: difft --color=always
+  commit:
+    autoWrapCommitMessage: false
