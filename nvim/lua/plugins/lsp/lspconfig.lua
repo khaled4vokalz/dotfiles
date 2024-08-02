@@ -76,6 +76,7 @@ return {
       "pyright",
       "graphql",
       "rust_analyzer",
+      "gopls",
     }
 
     for _, lsp in ipairs(servers) do
