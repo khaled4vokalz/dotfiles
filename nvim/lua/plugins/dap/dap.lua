@@ -150,6 +150,18 @@ return {
       },
     }
 
+    dap.configurations.python = {
+      {
+        name = "Aerial",
+        type = "python",
+        python = vim.fn.getcwd() .. "/.venv/bin/python",
+        request = "launch",
+        program = vim.fn.getcwd() .. "/main.py",
+        console = "integratedTerminal",
+        justMyCode = false,
+      },
+    }
+
     for _, language in ipairs(js_based_languages) do
       dap.configurations[language] = {
         -- Debug nodejs processes (make sure to add --inspect when you run the process)
