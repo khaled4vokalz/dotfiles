@@ -137,6 +137,9 @@ output * bg /usr/share/backgrounds/Monument_valley_by_orbitelambda.jpg fill
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+    # Don't loose focus on mouse move (sloppy focus)
+    focus_follows_mouse no
 #
 # Workspaces:
 #
