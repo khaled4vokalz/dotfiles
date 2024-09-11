@@ -44,8 +44,8 @@ alias glo='git log --pretty=format:"%C(yellow)%h %C(blue)%>(12)%ad %C(green)%<(7
 alias logout='sudo pkill -u $(whoami)'
 # alias tks="tmux kill-session -t $(tmux display-message -p '#S')"
 alias fzf="fzf --height 40% --layout reverse --border"
-alias fo="fzf --print0 | xargs -0 -o vi"
 alias vi=/opt/nvim/bin/nvim
+alias fo="fzf --print0 | xargs -0 -o nvim"
 
 
 ####################################################### User functions #########################################################
