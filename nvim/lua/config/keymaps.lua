@@ -18,6 +18,8 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
+keymap.set("n", "<leader>vt", "<cmd>DiagnosticsToggleVirtualText<CR>", { desc = "Toggle diagnostic virtual texts" })
+
 keymap.set("n", "<leader>dd", function()
   vim.diagnostic.open_float()
 end, { noremap = true, desc = "Open floating diagnostics window" }) --  move current buffer to new tab
