@@ -3,7 +3,7 @@ return {
   cmd = "Git",
   keys = {
     {
-      "<leader>fbb",
+      "<leader>gb",
       "<cmd>Git blame<cr>",
       desc = "Blame file (Fugitive)",
     },
