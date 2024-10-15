@@ -88,7 +88,7 @@ return {
     -- END
     local util = require("lspconfig.util")
     local root_dir = util.root_pattern(".git")
-    lspconfig["tsserver"].setup({
+    lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       root_dir = root_dir,
@@ -106,6 +106,12 @@ return {
     })
 
     lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = root_dir,
+    })
+
+    lspconfig["jdtls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       root_dir = root_dir,
