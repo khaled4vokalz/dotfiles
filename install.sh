@@ -53,13 +53,23 @@ setup_nvm() {
 
 ### neovim (YaY)
 setup_neovim() {
+  sudo apt update
 	sudo apt install -y neovim
 }
 
 ### alacritty (awesome terminal emulator)
 setup_alacritty() {
 	sudo add-apt-repository ppa:aslatter/ppa -y
+  sudo apt update
 	sudo apt install -y alacritty
+}
+
+### wezterm
+setup_wezterm() {
+  curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
+  echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+  sudo apt update
+	sudo apt install -y wezterm
 }
 
 ### tmux (awesome terminal multiplexer)
@@ -108,6 +118,7 @@ install_tools() {
 	setup_nvm
 	setup_neovim
 	setup_alacritty
+  setup_wezterm
 	setup_tmux
 	setup_starship
 	setup_brave_browser

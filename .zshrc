@@ -5,7 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH=${PATH}:${HOME}/.local/bin 
-export TERMINAL="alacritty"
+export TERMINAL="wezterm"
 # this is needed for jmeter to be able to zoom in it's default GUI is HI Res monitors
 # REF: https://jmeter.apache.org/usermanual/hints_and_tips.html#hidpi
 export JVM_ARGS="-Dsun.java2d.uiScale=200%"
