@@ -8,19 +8,19 @@ mods = "Control|Shift"
 action = "CreateNewWindow"
 
 [font.normal]
-family = "RobotoMono Nerd Font Mono"
+family = "MesloLGS Nerd Font Mono"
 style = "regular"
 
 [font.bold]
-family = "RobotoMono Nerd Font Mono"
+family = "MesloLGS Nerd Font Mono"
 style = "bold"
 
 [font.italic]
-family = "RobotoMono Nerd Font Mono"
+family = "MesloLGS Nerd Font Mono"
 style = "italic"
 
 [font.bold_italic]
-family = "RobotoMono Nerd Font Mono"
+family = "MesloLGS Nerd Font Mono"
 style = "bold_italic"
 
 [window]

@@ -20,16 +20,16 @@ keyboard:
 
 font:
   normal:
-    family: "RobotoMono Nerd Font Mono"
+    family: "MesloLGS Nerd Font Mono"
     style: regular
   bold:
-    family: "RobotoMono Nerd Font Mono"
+    family: "MesloLGS Nerd Font Mono"
     style: bold
   italic:
-    family: "RobotoMono Nerd Font Mono"
+    family: "MesloLGS Nerd Font Mono"
     style: italic
   bold_italic:
-    family: "RobotoMono Nerd Font Mono"
+    family: "MesloLGS Nerd Font Mono"
     style: bold_italic
 window:
   padding:
