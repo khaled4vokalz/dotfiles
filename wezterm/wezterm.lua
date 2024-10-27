@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 
-return {
+local config = {
 	color_scheme = "Catppuccin Macchiato",
 
 	-- with leader we can mimic TMUX
@@ -51,21 +51,23 @@ return {
 	},
 
 	wezterm.on("format-tab-title", function(tab)
+		local index = tab.tab_index + 1 -- Tab index (starting from 1)
+		local title = tab.active_pane.title -- Default title of the active pane
 		local zoom_icon = ""
 
+		-- Format the title to include index: title e.g. `1: vi`
+		local formatted_title = string.format("%d: %s ", index, title)
+
 		-- Check if the pane is zoomed and add an icon if it is
-		if tab.active_pane.is_zoomed then
-			zoom_icon = " () " -- Icon to indicate zoom; change this to any icon or text you like
+		if tab.is_active and tab.active_pane.is_zoomed then
+			zoom_icon = "()" -- Icon to indicate zoom; change this to any icon or text you like
 		end
 
-		-- local dir = tab.is_active and tab.active_pane.current_working_dir:match("file://[^/]*(/.*)")
-		-- 	or tab.active_pane.current_working_dir:match("([^/]+)/*$")
-		-- Customize tab title with or without the zoom icon
-		local title = zoom_icon .. tab.active_pane.title .. " | " .. (tab.tab_index + 1)
 		return {
-			{ Text = title },
+			{ Text = zoom_icon .. " " .. formatted_title },
 		}
 	end),
+
 	-- Font configuration
 	-- font_size = 11.0,
 	font = wezterm.font_with_fallback({
@@ -100,21 +102,23 @@ return {
 	},
 
 	-- Scrolling
-	scrollback_lines = 1000000,
+	scrollback_lines = 10000,
 
 	use_fancy_tab_bar = false,
 	status_update_interval = 1000,
 
-	tab_and_split_indices_are_zero_based = true,
+	tab_and_split_indices_are_zero_based = false,
 	hide_tab_bar_if_only_one_tab = false,
 	show_new_tab_button_in_tab_bar = false,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "NONE",
+
+	adjust_window_size_when_changing_font_size = true,
 	-- tab_max_width = 50,
 	-- tmux status
 	wezterm.on("update-right-status", function(window, _)
 		local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
-		local prefix = " " .. utf8.char(0x1F5A5) -- ocean wave
+		local prefix = " " .. utf8.char(0x1F5A5)
 		local left_status_color = "#a6e3a1"
 
 		if window:leader_is_active() then
@@ -139,8 +143,17 @@ return {
 			active_tab = { bg_color = "#fab387", fg_color = "#1A1A1A" },
 			inactive_tab = { bg_color = "#282C34", fg_color = "#FFFFF9" },
 			inactive_tab_hover = { bg_color = "#3B4048", fg_color = "#D0D0D0", italic = true },
-			new_tab = { bg_color = "#1E1E2E", fg_color = "#D0D0D0" },
-			new_tab_hover = { bg_color = "#282C34", fg_color = "#D0D0D0", italic = true },
 		},
 	},
+
+	hyperlink_rules = wezterm.default_hyperlink_rules(),
 }
+
+table.insert(config.hyperlink_rules, {
+	-- JIRA Issues
+	regex = [[\b([A-Z]+-\d+)\b]],
+	format = "https://jira.stibodx.com/browse/$0",
+	highlight = 1,
+})
+
+return config
