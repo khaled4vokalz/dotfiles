@@ -15,8 +15,8 @@ set $up k
 set $right l
 set $wayland_flags  --enable-webrtc-pipewire-capturer --enable-features=WaylandWindowDecorations --enable-features=UseOzonePlatform --ozone-platform-hint=auto
 set $browser google-chrome $wayland_flags & disown
-# options thunar, vifm
-set $file_explorer thunar
+# options thunar, vifm, yazi
+set $file_explorer yazi
 
 # screen recording tool, peek doesn't work on wayland and also discontinued currently
 set $screen_recorder wf-recorder --geometry "$(slrup)"
@@ -266,7 +266,8 @@ bindsym $mod+m exec $lockman
 
 #
 # File explorer
-bindsym $mod+x exec $file_explorer & disown
+# bindsym $mod+x exec --no-startup-id $file_explorer & disown
+bindsym $mod+x exec --no-startup-id wezterm start $file_explorer
 
 #
 # Screen Recording
