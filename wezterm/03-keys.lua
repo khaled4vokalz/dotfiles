@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local utils = require("utils")
 
 local keys = {
 	--[[
@@ -55,17 +56,19 @@ local keys = {
 	{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|TABS" }) },
 
 	-- list workspaces
-	{ key = "l", mods = "SHIFT|ALT", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	{
+		key = "l",
+		mods = "SHIFT|ALT",
+		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+	},
 
 	-- kill a whole workspace forcefully
 	{
 		key = "k",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action_callback(function(win, pane)
-			local tab_ids = win:tabs_with_info() -- gets all tabs in the current window
-			for _, tab_info in ipairs(tab_ids) do
-				win:close_tab(tab_info.tab_id) -- closes each tab by its ID
-			end
+		action = wezterm.action_callback(function(window)
+			local w = window:active_workspace()
+			utils.kill_workspace(w)
 		end),
 	},
 
