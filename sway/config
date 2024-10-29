@@ -319,8 +319,10 @@ bindsym XF86MonBrightnessDown exec light -U 5
 #
 # for_window [app_id="flameshot"] floating enable, fullscreen disable, move absolute position 0 0, border pixel 0
 # bindsym $mod+p exec --no-startup-id $screen_shot
-bindsym $mod+p exec ~/.config/sway/scripts/take-screenshot-and-copy.sh
-bindsym $mod+Shift+p exec ~/.config/sway/scripts/take-screenshot-with-edit.sh
+bindsym $mod+p exec ~/.config/sway/scripts/take-screenshot.sh --copy
+bindsym $mod+Shift+p exec ~/.config/sway/scripts/take-screenshot.sh --edit
+bindsym Shift+Print exec ~/.config/sway/scripts/take-screenshot.sh --fullscreen --copy
+bindsym Ctrl+Shift+Print exec ~/.config/sway/scripts/take-screenshot.sh --fullscreen --edit
 
 #
 # Fix external monitor scaling
