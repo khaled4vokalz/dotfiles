@@ -331,14 +331,25 @@ exec_always ~/.config/sway/scripts/adjust_monitors.sh
 #
 # Network Manager
 #
-for_window [app_id="nm_tui_win"] floating enable, move position center
 bindsym $mod+i exec --no-startup-id wezterm start nmtui
 
+#
+# Bluetooth Manager
+#
 bindsym $mod+z exec --no-startup-id blueman-manager 
 
 
 # assign [app_id="Slack"] workspace number 1
 # assign [app_id="Alacritty"] workspace number 2
 # assign [app_id="google-chrome"] workspace number 3
+
+
+# Hide the title bars
+# TODO: need to figure out how to add exception for stacked windows
+default_border none
+default_floating_border none
+font pango:monospace 0.001
+titlebar_padding 1
+titlebar_border_thickness 0
 
 include /etc/sway/config.d/*
