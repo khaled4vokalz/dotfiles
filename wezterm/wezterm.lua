@@ -20,6 +20,7 @@ local overrides = {
 
 local config = {
 	color_scheme = "Catppuccin Macchiato",
+	default_workspace = "0",
 
 	-- Environment
 	set_environment_variables = {
