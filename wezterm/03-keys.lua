@@ -79,7 +79,7 @@ local keys = {
 		action = wezterm.action.SwitchToWorkspace({
 			name = "monitoring",
 			spawn = {
-				args = { "htop" },
+				args = { "btop" },
 			},
 		}),
 	},
