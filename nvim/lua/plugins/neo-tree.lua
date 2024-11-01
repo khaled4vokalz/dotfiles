@@ -44,10 +44,13 @@ return {
               "5. Filename without extension: " .. results[5],
               "6. Extension of the filename: " .. results[6],
             }, { prompt = "Choose to copy to clipboard:" }, function(choice)
-              local i = tonumber(choice:sub(1, 1))
-              local result = results[i]
-              vim.fn.setreg("+", result)
-              vim.notify("Copied: " .. result)
+              -- if user didn't choose anything we shouldn't try to do anything
+              if choice then
+                local i = tonumber(choice:sub(1, 1))
+                local result = results[i]
+                vim.fn.setreg("+", result)
+                vim.notify("Copied: " .. result)
+              end
             end)
           end,
         },
