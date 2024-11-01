@@ -233,10 +233,10 @@ output * bg /usr/share/backgrounds/Monument_valley_by_orbitelambda.jpg fill
 # bindsym $mod+r mode "resize"
 
 # resizing it this way as the mode 'resize' does not work
-bindsym $mod+Ctrl+$left resize shrink width 10px
-bindsym $mod+Ctrl+$down resize grow height 10px
-bindsym $mod+Ctrl+$up resize shrink height 10px
-bindsym $mod+Ctrl+$right resize grow width 10px
+bindsym $mod+Ctrl+l resize shrink width 20px
+bindsym $mod+Ctrl+h resize grow width 20px
+bindsym $mod+Ctrl+j resize shrink height 10px
+bindsym $mod+Ctrl+k resize grow height 10px
 
 #
 # Status Bar:
