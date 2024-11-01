@@ -24,10 +24,10 @@ local keys = {
 	{ key = "k", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
 	{ key = "l", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
 
-	{ key = "H", mods = "LEADER", action = wezterm.action({ AdjustPaneSize = { "Left", 2 } }) },
-	{ key = "J", mods = "LEADER", action = wezterm.action({ AdjustPaneSize = { "Down", 2 } }) },
-	{ key = "K", mods = "LEADER", action = wezterm.action({ AdjustPaneSize = { "Up", 2 } }) },
-	{ key = "L", mods = "LEADER", action = wezterm.action({ AdjustPaneSize = { "Right", 2 } }) },
+	{ key = "H", mods = "CTRL|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Left", 3 } }) },
+	{ key = "J", mods = "CTRL|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Down", 2 } }) },
+	{ key = "K", mods = "CTRL|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Up", 2 } }) },
+	{ key = "L", mods = "CTRL|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Right", 3 } }) },
 
 	-- Open new tab using current panes' PWD (domain)
 	{ key = "c", mods = "LEADER|CTRL", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
@@ -65,7 +65,7 @@ local keys = {
 	-- kill a whole workspace forcefully
 	{
 		key = "k",
-		mods = "CTRL|SHIFT",
+		mods = "SHIFT|ALT",
 		action = wezterm.action_callback(function(window)
 			local w = window:active_workspace()
 			utils.kill_workspace(w)
