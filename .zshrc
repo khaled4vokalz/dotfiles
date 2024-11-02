@@ -23,7 +23,24 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 ####################################################### SOURCINGS #################################################################
 
-plugins=(git ssh-agent colored-man-pages zsh-autosuggestions kubectl)
+function zvm_config() {
+  # enable next line if we want to get into the terminal in NORMAL VIM mode
+  # ZVM_LINE_INIT_MODE=$ZVM_MODE_NORMAL
+
+  # Retrieve default cursor styles
+  local ncur=$(zvm_cursor_style $ZVM_NORMAL_MODE_CURSOR)
+  local icur=$(zvm_cursor_style $ZVM_NORMAL_MODE_CURSOR)
+
+  # Append your custom color for your cursor
+  ZVM_INSERT_MODE_CURSOR=$icur'\e\e]12;#85e872\a'
+  ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#ffffff\a'
+  zvm_after_init_commands+=('source <(fzf --zsh)')
+}
+
+# make sure the zsh-vi-mode plugin is cloned first
+# git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
+
+plugins=(git ssh-agent colored-man-pages zsh-autosuggestions kubectl zsh-vi-mode)
 source $ZSH/oh-my-zsh.sh
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
@@ -62,7 +79,7 @@ function mkfile() {
     mkdir -p  "$1" && touch  "$1"/"$2"
 }
 
-# NODE VERSION MANAGER (NVIM)
+# NODE VERSION MANAGER (NVM)
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
