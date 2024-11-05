@@ -10,6 +10,7 @@ return {
   },
   config = function()
     require("telescope").load_extension("live_grep_args")
+    require("telescope").load_extension("neoclip")
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
     keymap.set(
@@ -17,6 +18,12 @@ return {
       "<leader>fg",
       ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
       { desc = "Find using grep" }
+    )
+    keymap.set(
+      "n",
+      "<C-n>",
+      ":lua require('telescope').extensions.neoclip.default()<CR>",
+      { noremap = true, silent = true, desc = "Find clips" }
     )
   end,
 }
