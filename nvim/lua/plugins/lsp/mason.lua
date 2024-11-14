@@ -31,7 +31,7 @@ return {
       ensure_installed = {
         "bashls",
         "eslint",
-        "tsserver",
+        "ts_ls",
         "bashls",
         "angularls",
         "html",
@@ -44,8 +44,6 @@ return {
         "yamlls",
         "lemminx",
         "jdtls",
-        "java-debug-adapter",
-        "java-test",
         "gopls",
       },
       -- auto-install configured servers (with lspconfig)
