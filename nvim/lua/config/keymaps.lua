@@ -30,3 +30,5 @@ keymap.set("x", "p", "P", { silent = true })
 keymap.set("n", "<leader>far", function()
   vim.lsp.buf.references()
 end, { noremap = true, desc = "Find all references " })
+
+keymap.set("n", "<leader>lg", "<cmd>FzfLua live_grep_native<CR>", { noremap = true, desc = "Live grep" })
