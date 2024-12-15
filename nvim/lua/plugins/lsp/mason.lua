@@ -45,8 +45,6 @@ return {
         "lemminx",
         "jdtls",
         "gopls",
-        "goimports",
-        "gofumpt",
         "dockerls",
       },
       -- auto-install configured servers (with lspconfig)
