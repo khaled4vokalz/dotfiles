@@ -24,7 +24,6 @@ require("lazy").setup({
     { import = "plugins.lsp" },
     { import = "plugins.dap" },
     { import = "plugins.colorschemes" },
-    { "rcarriga/nvim-notify", enabled = false },
     { "mfussenegger/nvim-jdtls" },
   },
   defaults = {
