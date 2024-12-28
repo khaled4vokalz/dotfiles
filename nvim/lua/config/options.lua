@@ -43,3 +43,6 @@ opt.swapfile = false
 
 -- show JSON quotes
 opt.conceallevel = 0
+
+-- keep block cursor in INSERT mode
+opt.guicursor = ""
