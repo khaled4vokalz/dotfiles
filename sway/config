@@ -46,7 +46,8 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /usr/share/backgrounds/Monument_valley_by_orbitelambda.jpg fill
+output * bg $HOME/.config/wallpapers/Arizona_night_by_Orbite_Lambda.jpg fill
+# output * bg /usr/share/backgrounds/OrioleMascot_by_Vladimir_Moskalenko_light.png fill
 
 #
 # Example configuration:
