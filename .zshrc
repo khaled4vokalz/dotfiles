@@ -18,7 +18,7 @@ export PATH=${PATH}:${JAVA_HOME}/bin
 # GO
 export PATH=$PATH:/usr/local/go/bin
 export PATH=${PATH}:${HOME}/go/bin 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$HOME/.config/nvm"
 export PYENV_ROOT="$HOME/.pyenv"
 
 ####################################################### SOURCINGS #################################################################
@@ -49,10 +49,6 @@ source <(fzf --zsh)
 
 ####################################################### ALIASES #########################################################
 
-alias cue="npm run cw"
-alias cue-ci="npm ci && npm run cw"
-alias jmeter=/opt/jmeter/bin/jmeter
-alias enter-nightly='ssh-keygen -f "$HOME/.ssh/known_hosts" -R $NIGHTLY_SERVER && ssh -o StrictHostKeyChecking=accept-new  $USER@$NIGHTLY_SERVER'
 alias copy="xclip -selection clipboard"
 alias ls="lsd"
 alias lzd='lazydocker'
