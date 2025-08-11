@@ -17,3 +17,15 @@ vim.api.nvim_create_user_command("DiagnosticsToggle", function()
     vim.diagnostic.enable(false)
   end
 end, {})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "*" },
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
+
+vim.api.nvim_create_user_command("ToggleAutoFormat", function()
+  vim.b.autoformat = not vim.b.autoformat
+  print("Autoformat is now " .. (vim.b.autoformat and "ON" or "OFF"))
+end, {})

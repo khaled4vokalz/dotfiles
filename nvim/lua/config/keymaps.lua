@@ -32,3 +32,4 @@ keymap.set("n", "<leader>far", function()
 end, { noremap = true, desc = "Find all references " })
 
 keymap.set("n", "<leader>lg", "<cmd>FzfLua live_grep_native<CR>", { noremap = true, desc = "Live grep" })
+keymap.set("n", "<leader>af", "<cmd>ToggleAutoFormat<CR>", { desc = "Toggle Autoformat" })
