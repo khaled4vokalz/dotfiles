@@ -33,3 +33,12 @@ end, { noremap = true, desc = "Find all references " })
 
 keymap.set("n", "<leader>lg", "<cmd>FzfLua live_grep_native<CR>", { noremap = true, desc = "Live grep" })
 keymap.set("n", "<leader>af", "<cmd>ToggleAutoFormat<CR>", { desc = "Toggle Autoformat" })
+
+keymap.set("n", "<leader>ll", function()
+  local ls = vim.opt.laststatus:get()
+  if ls == 0 then
+    vim.opt.laststatus = 2 -- show
+  else
+    vim.opt.laststatus = 0 -- hide
+  end
+end, { noremap = true, desc = "Toggle lualine statusline" })

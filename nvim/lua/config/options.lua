@@ -46,3 +46,6 @@ opt.conceallevel = 0
 
 -- keep block cursor in INSERT mode
 opt.guicursor = ""
+
+-- disable extra space at the bottom of the screen
+opt.cmdheight = 0
