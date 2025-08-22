@@ -3,7 +3,7 @@ local hyperlink_rules = require("wezterm").default_hyperlink_rules()
 table.insert(hyperlink_rules, {
 	-- JIRA Issues
 	regex = [[\b([A-Z]+-\d+)\b]],
-	format = "https://jira.stibodx.com/browse/$0",
+	format = "https://jira.sso.episerver.net/browse/$0",
 	highlight = 1,
 })
 
