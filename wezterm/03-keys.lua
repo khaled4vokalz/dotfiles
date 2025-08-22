@@ -109,6 +109,20 @@ local keys = {
 			end),
 		}),
 	},
+
+  -- Select workspace
+  {
+    key = 'w',
+    mods = 'LEADER',
+    action = wezterm.action.ShowLauncherArgs {
+      flags = 'FUZZY|WORKSPACES',
+    },
+  },
+  { key = "[", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(1) },
+  { key = "]", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(-1) },
+
+  -- Sessionizer
+  { key = "f", mods = "LEADER", action = wezterm.action_callback(utils.toggle) },
 }
 
 for i = 1, 9 do
