@@ -3,6 +3,14 @@ local utils = require("utils")
 
 local keys = {
 	--[[
+  -- --------------------------------- Add New Line (ClaudeCode?)----------------------
+  --]]
+  {
+    key="Enter",
+    mods="SHIFT",
+    action = wezterm.action({ SendString="\x1b\r" })
+  },
+	--[[
   -- --------------------------------- SPLIT PANES ------------------------------------
   --]]
 	{
@@ -47,6 +55,20 @@ local keys = {
 		key = "z",
 		mods = "LEADER",
 		action = wezterm.action.TogglePaneZoomState,
+	},
+
+  --[[
+  -- -------------------------------- TAB ORDER -----------------------------------------
+  --]]
+	{
+		key = "[",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.MoveTabRelative(-1), -- left
+	},
+	{
+		key = "]",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.MoveTabRelative(1), -- right
 	},
 
 	--[[
