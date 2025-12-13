@@ -2,8 +2,8 @@ return {
   "williamboman/mason.nvim",
   dependencies = {
     "jose-elias-alvarez/null-ls.nvim",
-    "williamboman/mason-lspconfig.nvim",
     "jayp0521/mason-null-ls.nvim",
+    "mason-org/mason-lspconfig.nvim",
   },
   config = function()
     -- import mason
@@ -46,6 +46,7 @@ return {
         "jdtls",
         "gopls",
         "dockerls",
+        "golangci-lint",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
