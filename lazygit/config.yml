@@ -7,6 +7,7 @@ customCommands:
     stream: true
 git:
   paging:
-    externalDiffCommand: difft --color=always
+    colorArg: always
+    pager: delta --paging=never --line-numbers
   commit:
     autoWrapCommitMessage: false
