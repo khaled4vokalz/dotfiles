@@ -76,7 +76,6 @@ return {
       "pyright",
       "graphql",
       "rust_analyzer",
-      "gopls",
       "dockerls",
     }
 
@@ -104,6 +103,12 @@ return {
       on_attach = on_attach,
       root_dir = root_dir,
       filetypes = { "html" },
+    })
+    
+    lspconfig["gopls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = root_dir,
     })
 
     lspconfig["eslint"].setup({
