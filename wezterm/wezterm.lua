@@ -40,6 +40,8 @@ local config = {
 	cursor_blink_ease_out = "Constant",
 	cursor_blink_rate = 0,
 	force_reverse_video_cursor = true,
+
+  enable_wayland = false
 }
 
 -- apply config overrides

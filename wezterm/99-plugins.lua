@@ -9,7 +9,7 @@ local M = {}
 -- ------------------------------------ Tabline ---------------------------------------
 -- ]]
 
-local tabline = wezterm.plugin.require("https://github.com/khaled4vokalz/tabline.wez")
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
   options = {
     theme = "Catppuccin Macchiato",
@@ -52,7 +52,7 @@ M.tabline = tabline
 -- ------------------------------------ RESURRECT ---------------------------------------
 -- ]]
 
-local resurrect = wezterm.plugin.require("https://github.com/khaled4vokalz/resurrect.wezterm")
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 resurrect.state_manager.periodic_save({
     interval_seconds = 300,
     save_tabs = true,
