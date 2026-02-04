@@ -2,6 +2,41 @@ local M = {}
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+-- Cross-platform binary path resolution
+local function is_macos()
+  return wezterm.target_triple:find("darwin") ~= nil
+end
+
+local function find_binary(name)
+  local paths
+  if is_macos() then
+    paths = {
+      "/opt/homebrew/bin/" .. name,
+      "/usr/local/bin/" .. name,
+      "/usr/bin/" .. name,
+    }
+  else
+    paths = {
+      "/usr/bin/" .. name,
+      "/usr/local/bin/" .. name,
+      "/home/" .. os.getenv("USER") .. "/.local/bin/" .. name,
+    }
+  end
+
+  for _, path in ipairs(paths) do
+    local f = io.open(path, "r")
+    if f then
+      f:close()
+      return path
+    end
+  end
+
+  -- Fallback: just return the name and hope it's in PATH
+  return name
+end
+
+M.find_binary = find_binary
+
 M.filter = function(tbl, callback)
   local filt_table = {}
 
@@ -25,7 +60,8 @@ local function deep_merge(t1, t2)
 end
 
 M.kill_workspace = function(workspace)
-  local success, stdout = wezterm.run_child_process({ "/usr/bin/wezterm", "cli", "list", "--format=json" })
+  local wezterm_bin = find_binary("wezterm")
+  local success, stdout = wezterm.run_child_process({ wezterm_bin, "cli", "list", "--format=json" })
 
   if success then
     local json = wezterm.json_parse(stdout)
@@ -39,7 +75,7 @@ M.kill_workspace = function(workspace)
 
     for _, p in ipairs(workspace_panes) do
       wezterm.run_child_process({
-        "/usr/bin/wezterm",
+        wezterm_bin,
         "cli",
         "kill-pane",
         "--pane-id=" .. p.pane_id,
@@ -49,7 +85,8 @@ M.kill_workspace = function(workspace)
 end
 
 M.toggle = function(window, pane)
-  local fd = "/opt/homebrew/bin/fd"
+  local fd = find_binary("fd")
+  local nvim = find_binary("nvim")
   local personalSourceDir = wezterm.home_dir .. "/personal"
   local workSourceDir = wezterm.home_dir .. "/workspace"
   local projects = {}
@@ -86,7 +123,7 @@ M.toggle = function(window, pane)
         else
           wezterm.log_info("Selected " .. label)
           win:perform_action(
-            act.SwitchToWorkspace({ name = id, spawn = { cwd = label, args = { "zsh", "--interactive", "--login", "-c", "/opt/homebrew/bin/nvim" } } }),
+            act.SwitchToWorkspace({ name = id, spawn = { cwd = label, args = { "zsh", "--interactive", "--login", "-c", nvim } } }),
             pane
           )
         end

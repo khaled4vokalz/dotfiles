@@ -1,5 +1,9 @@
 local wezterm = require("wezterm")
 local utils = require("utils")
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+
+-- Configure smart_workspace_switcher with cross-platform zoxide path
+workspace_switcher.zoxide_path = utils.find_binary("zoxide")
 
 local keys = {
 	--[[
@@ -79,15 +83,15 @@ local keys = {
 
 	-- list workspaces
 	{
-		key = "l",
-		mods = "SHIFT|ALT",
+		key = "L",
+		mods = "LEADER",
 		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
 	},
 
 	-- kill a whole workspace forcefully
 	{
 		key = "k",
-		mods = "SHIFT|ALT",
+		mods = "LEADER",
 		action = wezterm.action_callback(function(window)
 			local w = window:active_workspace()
 			utils.kill_workspace(w)
@@ -96,39 +100,13 @@ local keys = {
 
 	-- monitoring workspace
 	{
-		key = "u",
-		mods = "CTRL|SHIFT",
+		key = "t",
+		mods = "LEADER",
 		action = wezterm.action.SwitchToWorkspace({
 			name = "monitoring",
 			spawn = {
 				args = { "btop" },
 			},
-		}),
-	},
-
-	-- Prompt for a name to use for a new workspace and switch to it.
-	{
-		key = "w",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.PromptInputLine({
-			description = wezterm.format({
-				{ Attribute = { Intensity = "Bold" } },
-				{ Foreground = { AnsiColor = "Fuchsia" } },
-				{ Text = "Enter name for new workspace" },
-			}),
-			action = wezterm.action_callback(function(window, pane, line)
-				-- line will be `nil` if they hit escape without entering anything
-				-- An empty string if they just hit enter
-				-- Or the actual line of text they wrote
-				if line then
-					window:perform_action(
-						wezterm.action.SwitchToWorkspace({
-							name = line,
-						}),
-						pane
-					)
-				end
-			end),
 		}),
 	},
 
@@ -143,8 +121,20 @@ local keys = {
   { key = "[", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(1) },
   { key = "]", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(-1) },
 
-  -- Sessionizer
-  { key = "f", mods = "LEADER", action = wezterm.action_callback(utils.toggle) },
+  -- Smart workspace switcher
+  {
+    key = "n",
+    mods = "LEADER",
+    action = workspace_switcher.switch_workspace(),
+  },
+  {
+    key = "p",
+    mods = "LEADER",
+    action = workspace_switcher.switch_to_prev_workspace(),
+  },
+
+  -- Fuzzy switcher
+  -- { key = "f", mods = "LEADER", action = wezterm.action_callback(utils.toggle) },
 }
 
 for i = 1, 9 do
