@@ -10,5 +10,5 @@ return {
 	status_update_interval = 1000,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
-	adjust_window_size_when_changing_font_size = true,
+	adjust_window_size_when_changing_font_size = false,
 }
