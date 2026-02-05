@@ -57,7 +57,7 @@ alias glo='git log --pretty=format:"%C(yellow)%h %C(blue)%>(12)%ad %C(green)%<(7
 alias logout='sudo pkill -u $(whoami)'
 # alias tks="tmux kill-session -t $(tmux display-message -p '#S')"
 alias fzf="fzf --height 40% --layout reverse --border"
-alias vi=/usr/bin/nvim
+alias vi=nvim
 alias fo="fzf --print0 | xargs -0 -o nvim"
 
 
@@ -103,7 +103,14 @@ eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 ### PYTHON
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# pyenv disabled - has readlink compatibility issues on some systems
+# Alternative: use mise (https://mise.run) - curl https://mise.run | sh
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# if command -v pyenv &>/dev/null; then
+#   eval "$(pyenv init -)"
+#   eval "$(pyenv virtualenv-init -)"
+# fi
+
+# mise (modern alternative to pyenv/nvm) - uncomment if installed
+eval "$(mise activate zsh)"
 
