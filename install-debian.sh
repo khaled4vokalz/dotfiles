@@ -242,17 +242,7 @@ install_dev_tools() {
     echo "Rust already installed"
   fi
 
-  # Node Version Manager (NVM)
-  if [[ ! -d "$HOME/.config/nvm" ]]; then
-    echo "Installing NVM..."
-    export NVM_DIR="$HOME/.config/nvm"
-    mkdir -p "$NVM_DIR"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-  else
-    echo "NVM already installed"
-  fi
-
-  # mise (modern alternative to pyenv/nvm/rbenv)
+  # mise (runtime manager for Python, Node, Go, etc.)
   if command -v mise &>/dev/null; then
     echo "mise already installed"
   else
@@ -313,48 +303,12 @@ install_terminals() {
   # sudo apt install -y alacritty
 }
 
-# Hyprland and Wayland tools
-install_hyprland() {
-  echo "Installing Hyprland and Wayland tools..."
-  echo "Note: Hyprland on Ubuntu/Debian may require additional repositories or building from source"
-
-  # Install available wayland tools
-  sudo apt install -y \
-    waybar \
-    wofi \
-    swaylock \
-    swayidle \
-    dunst \
-    libnotify-bin \
-    grim \
-    slurp \
-    wf-recorder \
-    brightnessctl \
-    playerctl \
-    pavucontrol \
-    blueman \
-    network-manager \
-    network-manager-gnome
-
-  # fuzzel and wlogout may need to be built from source
-  if ! command -v fuzzel &>/dev/null; then
-    echo "Note: fuzzel may not be available in default repos. Consider building from source."
-  fi
-
-  # Hyprland - check if available or provide instructions
-  if apt-cache show hyprland &>/dev/null; then
-    sudo apt install -y hyprland xdg-desktop-portal-hyprland
-  else
-    echo ""
-    echo "Hyprland is not available in default Ubuntu/Debian repos."
-    echo "For Ubuntu 24.04+, you can try:"
-    echo "  sudo add-apt-repository ppa:hyprwm/hyprland"
-    echo "  sudo apt update && sudo apt install hyprland"
-    echo ""
-    echo "Or build from source: https://wiki.hyprland.org/Getting-Started/Installation/"
-    echo ""
-  fi
-}
+# Hyprland and Wayland tools - disabled (use Omarchy or install manually)
+# install_hyprland() {
+#   echo "Installing Hyprland and Wayland tools..."
+#   # ... removed - Hyprland installation on Debian/Ubuntu is complex
+#   # Use Omarchy (https://omarchy.dev) or install manually
+# }
 
 # GUI Applications
 install_gui_apps() {
@@ -441,11 +395,7 @@ setup_tmux() {
 }
 
 # Enable services
-enable_services() {
-  echo "Enabling services..."
-  sudo systemctl enable NetworkManager 2>/dev/null || true
-  sudo systemctl enable bluetooth 2>/dev/null || true
-}
+# enable_services() - removed (handled by desktop environment installers like Omarchy)
 
 # Link configuration files
 link_configs() {
@@ -465,16 +415,10 @@ main() {
     install_delta
     install_difftastic
     install_terminals
-    if [[ "$SKIP_DESKTOP" == false ]]; then
-      install_hyprland
-    fi
     install_gui_apps
     install_fonts
     setup_zsh
     setup_tmux
-    if [[ "$SKIP_DESKTOP" == false ]]; then
-      enable_services
-    fi
   fi
 
   link_configs
@@ -488,9 +432,6 @@ main() {
   echo "  1. Restart your terminal or run: source ~/.zshrc"
   echo "  2. Install tmux plugins: Press prefix + I in tmux"
   echo "  3. Open neovim to install plugins: nvim"
-  if [[ "$SKIP_DESKTOP" == false ]]; then
-    echo "  4. Log out and select Hyprland as your session"
-  fi
   echo ""
 }
 

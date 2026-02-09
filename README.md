@@ -87,8 +87,7 @@ All Linux installers support `--skip-packages` and `--skip-desktop` flags.
 | Tool | Description |
 |------|-------------|
 | Rust | Via rustup |
-| mise | Modern runtime manager (Python, Node, Go, etc.) |
-| NVM | Node version manager (legacy, can use mise instead) |
+| mise | Runtime manager (Python, Node, Ruby, Go, etc.) |
 | Go | Go programming language |
 
 ### Terminal Emulators

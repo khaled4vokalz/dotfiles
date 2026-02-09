@@ -115,17 +115,7 @@ install_dev_tools() {
     echo "Rust already installed"
   fi
 
-  # Node Version Manager (NVM)
-  if [[ ! -d "$HOME/.config/nvm" ]]; then
-    echo "Installing NVM..."
-    export NVM_DIR="$HOME/.config/nvm"
-    mkdir -p "$NVM_DIR"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-  else
-    echo "NVM already installed"
-  fi
-
-  # mise (modern alternative to pyenv/nvm/rbenv)
+  # mise (runtime manager for Python, Node, Go, etc.)
   if command -v mise &>/dev/null; then
     echo "mise already installed"
   else
