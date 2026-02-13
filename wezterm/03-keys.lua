@@ -81,16 +81,10 @@ local keys = {
 	-- list tabs in a workspace
 	{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|TABS" }) },
 
-	-- list workspaces
-	{
-		key = "L",
-		mods = "LEADER",
-		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
-	},
 
 	-- kill a whole workspace forcefully
 	{
-		key = "k",
+		key = "K",
 		mods = "LEADER",
 		action = wezterm.action_callback(function(window)
 			local w = window:active_workspace()
@@ -109,15 +103,12 @@ local keys = {
 			},
 		}),
 	},
-
-  -- Select workspace
-  {
-    key = 'w',
-    mods = 'LEADER',
-    action = wezterm.action.ShowLauncherArgs {
-      flags = 'FUZZY|WORKSPACES',
-    },
-  },
+	-- Select workspaces
+	{
+		key = "L",
+		mods = "LEADER",
+		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+	},
   { key = "[", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(1) },
   { key = "]", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(-1) },
 
