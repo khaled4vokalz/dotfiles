@@ -4,6 +4,12 @@ customCommands:
     command: "git show {{.SelectedLocalCommit.Sha}}"
     description: "Show selected commit"
     output: terminal
+gui:
+  theme:
+    selectedLineBgColor:
+      - "#3b4261"
+    selectedRangeBgColor:
+      - "#3b4261"
 git:
   pagers:
     - colorArg: always

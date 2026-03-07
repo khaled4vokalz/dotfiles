@@ -50,6 +50,7 @@ source <(fzf --zsh)
 
 alias copy="xclip -selection clipboard"
 alias ls="lsd"
+alias ll="ls -la"
 alias lzd='lazydocker'
 alias lg='lazygit'
 alias glo='git log --pretty=format:"%C(yellow)%h %C(blue)%>(12)%ad %C(green)%<(7)%aN%Cred%d %Creset%s"'

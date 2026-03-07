@@ -27,7 +27,7 @@ symbol = " "
 style_user = "green bold"
 style_root = "red bold"
 # format = "[$user]($style)"
-format = "🤖🐧"
+format = "🤖 "
 disabled = false
 show_always = true
 

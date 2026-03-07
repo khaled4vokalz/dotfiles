@@ -105,7 +105,7 @@ local keys = {
 	},
 	-- Select workspaces
 	{
-		key = "l",
+		key = "L",
 		mods = "LEADER",
 		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
 	},
