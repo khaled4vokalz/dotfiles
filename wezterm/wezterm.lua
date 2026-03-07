@@ -2,7 +2,7 @@
 require("99-plugins")
 
 -- keep it sorted on require
-local colors = require("01-colors") -- not used currently
+local colors = require("01-colors")
 local fonts = require("02-fonts")
 local keymaps = require("03-keys")
 local decorations = require("04-window")
@@ -10,7 +10,7 @@ local hyperlink_rules = require("05-hyperlinks")
 local tabs = require("06-tabs")
 
 local overrides = {
-	-- colors,
+	colors,
 	fonts,
 	keymaps,
 	decorations,
@@ -19,7 +19,7 @@ local overrides = {
 }
 
 local config = {
-	color_scheme = "Catppuccin Macchiato",
+	-- color_scheme = "Catppuccin Macchiato",
 	default_workspace = "default",
 
 	-- Environment

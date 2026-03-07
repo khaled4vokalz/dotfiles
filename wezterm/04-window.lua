@@ -2,8 +2,8 @@ return {
 	-- Window appearance
 	window_padding = {
 		-- remove un-needed paddings
-		left = 0,
-		right = 0,
+		left = 14,
+		right = 14,
 		top = 0,
 		bottom = 0,
 	},
