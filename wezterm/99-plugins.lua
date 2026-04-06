@@ -3,6 +3,20 @@ local utf8 = require("utf8")
 local color_assets = require("97-assets").colors
 
 local TERMINAL_ICON_WITH_PADDING = utf8.char(0xE795) -- 
+
+local function has_custom_tab_title(tab)
+  local title = tab.tab_title
+  return title and title ~= "" and title ~= "default"
+end
+
+local function process_or_custom_title(str, tab)
+  if has_custom_tab_title(tab) then
+    return tab.tab_title
+  end
+
+  return str
+end
+
 local M = {}
 
 -- [[
@@ -42,6 +56,15 @@ tabline.setup({
     tabline_x = {}, --\
     tabline_y = {}, -- batteries and stuff
     tabline_z = {}, --/
+    tab_active = {
+      "index",
+      { "process", fmt = process_or_custom_title },
+      "zoomed",
+    },
+    tab_inactive = {
+      "index",
+      { "process", fmt = process_or_custom_title },
+    }
   },
 })
 
