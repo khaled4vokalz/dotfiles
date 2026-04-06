@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local utils = require("utils")
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 
 -- Configure smart_workspace_switcher with cross-platform zoxide path
 workspace_switcher.zoxide_path = utils.find_binary("zoxide")
@@ -20,6 +21,68 @@ local keys = {
         end
       end),
     },
+  },
+
+  {
+    key = "S",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action_callback(function(window)
+      local ok, err = pcall(function()
+        local workspace = wezterm.mux.get_active_workspace()
+        resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
+        resurrect.state_manager.write_current_state(workspace, "workspace")
+      end)
+      if not ok then
+        wezterm.log_error("resurrect manual save failed: " .. tostring(err))
+        window:toast_notification("wezterm", "resurrect save failed", nil, 3000)
+      else
+        window:toast_notification("wezterm", "resurrect saved workspace", nil, 1500)
+      end
+    end),
+  },
+
+  {
+    key = "R",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action_callback(function(window, pane)
+      local ok, err = pcall(function()
+        resurrect.fuzzy_loader.fuzzy_load(window, pane, function(id)
+          local kind = string.match(id, "^([^/]+)")
+          local name = string.match(id, "([^/]+)$")
+          name = name and string.match(name, "(.+)%..+$") or nil
+          if not kind or not name then
+            return
+          end
+
+          local opts = {
+            relative = true,
+            restore_text = true,
+            on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+          }
+
+          if kind == "workspace" then
+            local state = resurrect.state_manager.load_state(name, "workspace")
+            if state then
+              resurrect.workspace_state.restore_workspace(state, opts)
+            end
+          elseif kind == "window" then
+            local state = resurrect.state_manager.load_state(name, "window")
+            if state then
+              resurrect.window_state.restore_window(pane:window(), state, opts)
+            end
+          elseif kind == "tab" then
+            local state = resurrect.state_manager.load_state(name, "tab")
+            if state then
+              resurrect.tab_state.restore_tab(pane:tab(), state, opts)
+            end
+          end
+        end)
+      end)
+      if not ok then
+        wezterm.log_error("resurrect manual restore failed: " .. tostring(err))
+        window:toast_notification("wezterm", "resurrect restore failed", nil, 3000)
+      end
+    end),
   },
 
 	--[[
