@@ -11,8 +11,8 @@ gui:
     selectedRangeBgColor:
       - "#3b4261"
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --paging=never --line-numbers
+      command: delta --paging=never --line-numbers
   commit:
     autoWrapCommitMessage: false

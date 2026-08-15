@@ -90,3 +90,6 @@ eval "$(zoxide init --cmd cd zsh)"
 # mise (modern alternative to pyenv/nvm) - uncomment if installed
 eval "$(mise activate zsh)"
 
+
+# opencode
+export PATH=/home/khaled/.opencode/bin:$PATH
